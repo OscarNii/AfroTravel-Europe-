@@ -57,7 +57,7 @@ const Carousel = () => {
         // container width equals number of slides * 100% so children can be sized by percentage
         style={{ width: `${slideCount * 100}%` }}
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 54, repeat: Infinity, ease: "linear" }}
       >
         {slides.map((src, idx) => (
           <div
@@ -92,12 +92,12 @@ export default function Home() {
   return (
     <div className="w-full overflow-hidden">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[90vh] flex items-center justify-center px-6 lg:px-20 py-20">
+      <section ref={heroRef} className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-20 py-12 sm:py-20">
         <motion.div 
           style={{ y: backgroundY, opacity }} 
           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/30 to-background-dark/50 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/40 to-background-dark/60 z-10 sm:via-background-dark/30 sm:to-background-dark/50" />
           <Carousel />
         </motion.div>
 
@@ -143,9 +143,9 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-5xl md:text-7xl font-bold tracking-tight mb-6 font-display"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 font-display leading-tight sm:leading-none"
           >
-            Connecting African Tech <br className="hidden md:block" />
+            Connecting African Tech <br className="hidden sm:block sm:hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
               to European Markets
             </span>
@@ -155,11 +155,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 sm:mb-10 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed sm:leading-relaxed"
           >
             We facilitate strategic partnerships, investment opportunities, and market entry
-            for innovative African startups expanding into Europe.
-          </motion.p>
+            </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
