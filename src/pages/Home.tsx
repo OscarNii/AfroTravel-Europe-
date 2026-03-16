@@ -38,6 +38,47 @@ const Marquee = () => (
   </div>
 );
 
+const Carousel = () => {
+  const images = [
+    "https://images.unsplash.com/photo-1503428593586-e225b39bddfe?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1626125345510-4603468eedfb?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  ];
+
+  // duplicate slides for seamless looping
+  const slides = [...images, ...images];
+  const slideCount = slides.length;
+
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <motion.div
+        className="flex h-full"
+        // container width equals number of slides * 100% so children can be sized by percentage
+        style={{ width: `${slideCount * 100}%` }}
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+      >
+        {slides.map((src, idx) => (
+          <div
+            key={idx}
+            className="h-full flex-shrink-0"
+            // each slide should take an equal fraction of the container width
+            style={{ width: `${100 / slideCount}%` }}
+          >
+            <img
+              src={src}
+              alt={`Travel ${idx}`}
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
 export default function Home() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -56,13 +97,8 @@ export default function Home() {
           style={{ y: backgroundY, opacity }} 
           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-background-dark/80 via-background-dark/90 to-background-dark z-10" />
-          <img
-            src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2940&auto=format&fit=crop"
-            alt="Tech Hub"
-            className="w-full h-full object-cover opacity-40"
-            referrerPolicy="no-referrer"
-          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/30 to-background-dark/50 z-10" />
+          <Carousel />
         </motion.div>
 
         {/* Animated Floating Orbs */}
