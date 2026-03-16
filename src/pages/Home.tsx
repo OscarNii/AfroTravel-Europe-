@@ -157,7 +157,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="text-base sm:text-lg md:text-xl text-slate-300 mb-6 sm:mb-10 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed sm:leading-relaxed"
           >
-            We facilitate strategic partnerships, investment opportunities, and market entry
+            We facilitate strategic partnerships, investment opportunities, and market entry to all 
             </motion.p>
 
           <motion.div
